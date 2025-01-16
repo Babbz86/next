@@ -1,7 +1,6 @@
 import type { ConfigType, OptionType, Dayjs } from 'dayjs';
 import { isPromise } from './object';
 import datejs from './date';
-
 export interface AnyFunction<Result = unknown> {
     (...args: unknown[]): Result;
 }
@@ -168,9 +167,9 @@ export function checkDate(value: ConfigType, format?: OptionType): Dayjs | null 
  * @param strictly - 是否严格校验：严格模式下不允许开始时间大于结束时间，在显示确认按键的，用户输入过程可不严格校验
  */
 export function checkRangeDate(
-    value: ConfigType,
+    value: ConfigType | ConfigType[],
     inputType: number,
-    disabled?: boolean,
+    disabled?: boolean | boolean[],
     strictly: boolean = true,
     format?: OptionType
 ): [Dayjs | null, Dayjs | null] {
@@ -197,4 +196,34 @@ export function checkRangeDate(
     }
 
     return [begin, end];
+}
+
+/**
+ * 字符型日期转为dayjs类型
+ */
+export function getValueWithDayjs(
+    val: ConfigType | ConfigType[],
+    format: OptionType
+): Array<Dayjs | null> | Dayjs | null {
+    let date;
+
+    if (Array.isArray(val)) {
+        date = val.map(v => {
+            return checkValueWithDayjs(v, format);
+        });
+    } else {
+        date = checkValueWithDayjs(val, format);
+    }
+    return date;
+}
+
+/**
+ * 将字符型转为dayjs类型，dayjs(x)解析无效时使用dayjs(x,format)再次解析。兼容YYYY-[Q]Q 季度类字符串
+ */
+export function checkValueWithDayjs(val: ConfigType, format: OptionType): Dayjs | null {
+    let date = checkDate(val);
+    if (!date) {
+        date = checkDate(val, format);
+    }
+    return date;
 }

@@ -1,5 +1,68 @@
 # Change Log 
 
+## [1.27.31](https://github.com/alibaba-fusion/next/compare/1.27.30...1.27.31) (2025-01-06)
+
+
+### Bug Fixes
+
+* **Core:** 修复使用 css variable 模式构建时，主题包内的 varMap 配置值会被重复覆盖的问题 ([#5002](https://github.com/alibaba-fusion/next/issues/5002)) ([6ed80bf](https://github.com/alibaba-fusion/next/commit/6ed80bf2a5f1eff453fe1ced2eb7a7366e719bd0))
+
+
+## [1.27.30](https://github.com/alibaba-fusion/next/compare/1.27.28...1.27.30) (2024-12-06)
+
+
+### Bug Fixes
+
+* **Badge:** set alignment by use transform ([fbda649](https://github.com/alibaba-fusion/next/commit/fbda649d53fe8bdf080b5cea51e2841233afa34c))
+* **Balloon:** v2 default offset adjustment ([3f5f818](https://github.com/alibaba-fusion/next/commit/3f5f81882963f8dbfb716c77a75622d001803b6e))
+* **CascaderSelect:** The value of the menuProps attribute is passed by props ([7a33369](https://github.com/alibaba-fusion/next/commit/7a33369dc01195edf5da7b15f7b9f2d45aa94ceb))
+* **Collapse:** Internal elements need to apply the radius configuration of external elements, close [#3277](https://github.com/alibaba-fusion/next/issues/3277) ([936c429](https://github.com/alibaba-fusion/next/commit/936c429ae74a2568d835b5f4c57b7abd94a6194c))
+* **DatePicker2:** support defaultValue & value for quarter, close [#3006](https://github.com/alibaba-fusion/next/issues/3006) ([9760278](https://github.com/alibaba-fusion/next/commit/97602785374fe6bdedfb8f5a97639b85d0fc32d2))
+* **Select:** Fix select doc ([af1c2e7](https://github.com/alibaba-fusion/next/commit/af1c2e7943be7f40e197cac0cd0b9db3fd5d44b0))
+
+
+### Code Refactoring
+
+* **ConfigProvider:** static reference to  moment ([e74c307](https://github.com/alibaba-fusion/next/commit/e74c30744907d3c4e712c90c28e31bdf972bd160))
+
+
+## [1.27.29](https://github.com/alibaba-fusion/next/compare/1.27.28...1.27.29) (2024-11-12)
+
+
+### Bug Fixes
+
+* **Slider:** correct typo and improve types definition ([9d4f0f7](https://github.com/alibaba-fusion/next/commit/9d4f0f79efb48e0ab657862bef17d0b3040e6709))
+
+
+## [1.27.28](https://github.com/alibaba-fusion/next/compare/1.27.26...1.27.28) (2024-10-21)
+
+
+### Bug Fixes
+
+* **DatePicker2:** after entering a customized date format and pressing Enter, the value should not change,closed [#4896](https://github.com/alibaba-fusion/next/issues/4896) ([e74ab40](https://github.com/alibaba-fusion/next/commit/e74ab40bf206ab0ad748d2c6b519972df1116810))
+* **Grid:** The style prop of Col in the Grid does not take effect ([836eeb6](https://github.com/alibaba-fusion/next/commit/836eeb65d355ff03b9d98d9819db95b82b7e8aac))
+* **Timeline:** left content of timeline item cannot be styled correctly ([f27e646](https://github.com/alibaba-fusion/next/commit/f27e646f8c3e3a72bf91992a870701226cfc9834))
+
+
+### Code Refactoring
+
+* **DatePicker:** convert to TypeScript, improve docs and tests ([4c37bf5](https://github.com/alibaba-fusion/next/commit/4c37bf5085176e2e34327e2def2e7b892dac6a2b))
+* **Form:** convert to TypeScript, improve docs and tests, close[#4585](https://github.com/alibaba-fusion/next/issues/4585) ([adbb6c9](https://github.com/alibaba-fusion/next/commit/adbb6c9f63170f4a4adc8395f3a33421c446dbcc))
+* **Form:** update form field options and dependencies ([f1c17a1](https://github.com/alibaba-fusion/next/commit/f1c17a1e5bbd68cd0e56e2334ed1a7690973899f))
+* **Range:** convert to TypeScript, improve docs and tests ([d4b99e9](https://github.com/alibaba-fusion/next/commit/d4b99e964a7d0bbd6e04b60d065ce884db0e6366))
+* **Shell:** convert to TypeScript, improve docs and tests ([202f538](https://github.com/alibaba-fusion/next/commit/202f5380026e75252d9a8267489ac1a5ff6b82f5))
+* **Tab:** convert to TypeScript, improve docs and tests ([4632a46](https://github.com/alibaba-fusion/next/commit/4632a467a77a4387c5ec8dec55a97353fa40ca33))
+* **TimePicker2:** convert to TypeScript, improve docs and tests, close [#4616](https://github.com/alibaba-fusion/next/issues/4616) ([e082513](https://github.com/alibaba-fusion/next/commit/e082513e781738fdbc27cd418cb6fa13aa06faa1))
+
+
+## [1.27.27](https://github.com/alibaba-fusion/next/compare/1.27.26...1.27.27) (2024-10-18)
+
+
+### Bug Fixes
+
+* **Switch:** style prop ([6c5b266](https://github.com/alibaba-fusion/next/commit/6c5b2661d029d9d80a6196f1a16412dcd180cac8))
+
+
 ## [1.27.26](https://github.com/alibaba-fusion/next/compare/1.27.25...1.27.26) (2024-09-20)
 
 

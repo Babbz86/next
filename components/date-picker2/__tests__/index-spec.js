@@ -1232,6 +1232,88 @@ describe('Picker', () => {
             findInput(0).simulate('keydown', { keyCode: KEYCODE.SPACE });
             assert(getStrValue(wrapper).join(',') === '2020-11-11 ,');
         })
+
+        // fix https://github.com/alibaba-fusion/next/issues/4896
+        it('After entering a customized date format and pressing Enter, the value should not change', () => {
+            function App() {
+                const [value, setValue] = useState('');
+                return (
+                    <DatePicker
+                        defaultVisible
+                        value={value}
+                        format={'DD/MM/YYYY'}
+                        outputFormat="YYYY-MM-DD"
+                        onChange={v => {
+                            setValue(v),
+                                assert(
+                                    v === dayjs('12/02/2020', 'DD/MM/YYYY').format('YYYY-MM-DD')
+                                );
+                        }}
+                    />
+                );
+            }
+            wrapper = mount(<App />);
+            changeInput('12/02/2020');
+            findInput().simulate('keydown', { keyCode: KEYCODE.ENTER });
+            assert(getStrValue(wrapper) === '12/02/2020');
+        });
+
+        // fix https://github.com/alibaba-fusion/next/issues/3006
+        it('Support defaultValue & value for quarter', () => {
+            let defaultValueList = [
+                [
+                    { in: '2021-Q2', out: '2021-Q2' },
+                    { in: '2021-Q3', out: '2021-Q3' },
+                ],
+                [
+                    { in: '2021-4-1', out: '2021-Q2' },
+                    { in: '2021-8-1', out: '2021-Q3' },
+                ],
+            ];
+            defaultValueList.forEach(defaultValue => {
+                const inValue = defaultValue.map(item => item.in);
+                const outValue = defaultValue.map(item => item.out);
+                wrapper = mount(<RangePicker defaultValue={inValue} mode="quarter" />);
+                assert.deepEqual(getStrValue(), outValue);
+            });
+
+            defaultValueList = [
+                { in: '2021-Q3', out: '2021-Q3' },
+                { in: '2021-7-1', out: '2021-Q3' },
+            ];
+            defaultValueList.forEach(defaultValue => {
+                const { in: inValue, out: outValue } = defaultValue;
+                wrapper = mount(<QuarterPicker defaultValue={inValue} />);
+                assert(getStrValue() === outValue);
+            });
+
+            let valueList = [
+                [
+                    { in: '2021-Q2', out: '2021-Q2' },
+                    { in: '2021-Q3', out: '2021-Q3' },
+                ],
+                [
+                    { in: '2021-4-1', out: '2021-Q2' },
+                    { in: '2021-8-1', out: '2021-Q3' },
+                ],
+            ];
+            valueList.forEach(value => {
+                const inValue = value.map(item => item.in);
+                const outValue = value.map(item => item.out);
+                wrapper = mount(<RangePicker value={inValue} mode="quarter" />);
+                assert.deepEqual(getStrValue(), outValue);
+            });
+
+            valueList = [
+                { in: '2021-Q3', out: '2021-Q3' },
+                { in: '2021-7-1', out: '2021-Q3' },
+            ];
+            valueList.forEach(value => {
+                const { in: inValue, out: outValue } = value;
+                wrapper = mount(<QuarterPicker value={inValue} />);
+                assert(getStrValue() === outValue);
+            });
+        });
     });
 });
 
